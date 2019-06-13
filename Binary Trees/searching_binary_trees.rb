@@ -121,7 +121,7 @@ class BinaryTree
                     if current_node.value == target_value
                         return "Found - #{current_node.value} in #{current_node}"
                     else
-                        current_node = stack.last                           #sets the current_node to be the last in the stack (or ensures rather as it should already be the last in the stack)
+                        current_node = stack.last                           #sets the current_node to whatever is last in the stack. This is the new current_node and enables the algorithm to move through the stack
                         stack.pop                                           #removes the last item in the stack (FILO)
                     end
                     stack.push(current_node.left_child) if !current_node.left_child.nil?
