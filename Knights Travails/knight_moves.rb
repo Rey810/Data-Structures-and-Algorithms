@@ -9,7 +9,7 @@ def bfs(knight, to)
     until(q.empty?)     #following block while continue until the "q" array (queue) is empty
 
         if to == q.first #checks if the value of the final position (to) is equal to the first item in the queue (essentially checks if the final position has been reached)
-            node == to   
+            node = to   
             break
         end
 
@@ -34,7 +34,7 @@ def get_path(pairs, from, to)
     pairs.reverse.each do |pair|        #loops through all the pairs in the relationships array which holds all of the possible moves from an initial position (due to the nature of the movements and the fact that the initial position keeps changing, the possible moves will include all the positions available on an 8x8 board)
         if pair[1] == to                #pair[0] is the 2 coordinate starting position, pair[1] is the final 2 coordinate position
             path << pair[1]             #adds the pair[1]'s' [x, y] to path
-            to == pair[0]               #this is CRUCIAL for the pathfinder to work. The 'to' is changed to match the pair[0] which serves initially as the 'from' but is now changed to the 'to' (i.e the target of the previous move). Now the if statement looks for the new 'to' value. In such a way, a path is constructed
+            to = pair[0]               #this is CRUCIAL for the pathfinder to work. The 'to' is changed to match the pair[0] which serves initially as the 'from' but is now changed to the 'to' (i.e the target of the previous move). Now the if statement looks for the new 'to' value. In such a way, a path is constructed
         end
     end
     path << from                        #this is the final addition to the path array
@@ -42,7 +42,7 @@ def get_path(pairs, from, to)
 end
 
 def show_result(path)
-    puts "You made it in #{path.length -1} moves. The path is: "
+    puts "You made it in #{path.length-1} moves. The path is: "
     path.each { |position| puts position.to_s }
 end
 
@@ -56,3 +56,5 @@ def knight_moves(from, to)
 
     show_result(path)
 end
+
+knight_moves([4, 4], [8, 8])

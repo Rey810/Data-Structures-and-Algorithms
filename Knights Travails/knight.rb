@@ -36,13 +36,13 @@ class Knight
 
 
     def valid_moves(from)                                               #displays the moves from the start and according to the various possible x and y movements
-        possible_moves = []                                             #contains the possible moves that the knight can make according to its starting position (from)
+        moves = []                                             #contains the possible moves that the knight can make according to its starting position (from)
         @@moves.each do |move|                                          #loops through all the items in the moves array which contains all the possible moves
-            col = from[0] + move[0]                                     #adds the coordinates of the x starting position to the x position of the CURRENT move
-            row = from[1] + move[1]                                     #adds the coordinates of the y starting position to the y position of the CURRENT move
-            possible_moves << [col, row] if valid_move?(col, row)       #only adds the x, y positions if the valid_move? method returns true
+            col = from[1] + move[1]                                     #adds the coordinates of the x starting position to the x position of the CURRENT move
+            row = from[0] + move[0]                                     #adds the coordinates of the y starting position to the y position of the CURRENT move
+            moves << [row, col] if valid_move?(row, col)       #only adds the x, y positions if the valid_move? method returns true
         end
-        possible_moves
+        moves
     end
 
 
@@ -52,6 +52,3 @@ class Knight
     end
 
 end
-
-new_knight = Knight.new([4, 4])                                         #creates a new instance of the Knight class
-p new_knight.valid_moves([4, 4])                                        #prints the possible_moves array
